@@ -235,7 +235,7 @@ Il `Dockerfile` è il file che contiene le istruzioni per creare un'immagine dal
 
 Andiamo a vedere come è fatto un Dockerfile
 
-```
+```Dockerfile
 FROM python:3.5-slim
 
 RUN pip install -q uwsgi==2.0.12
@@ -280,7 +280,7 @@ come si può vedere docker ci informa quando può utilizzare un layer già creat
 
 Abbiamo visto che ogni riga di un Dockerfile crea un nuovo layer. Questo vuol dire che ad esempio un Dockerfile fatto così:
 
-```
+```Dockerfile
 ...
 RUN cd /src
 
@@ -298,7 +298,7 @@ RUN rm -rf /src
 
 avrà un layer per ciascuno dei passi, e l'rm non servirà ad evitare che l'immagine contenga tutti gli oggetti creati dal compilatore in /src. Per questo l'unica soluzione è accorpare i passi:
 
-```
+```Dockerfile
 ...
 RUN cd /src && \
    ./configure && \
@@ -311,7 +311,7 @@ RUN cd /src && \
 
 Un trucco simile si fa con apt:
 
-```
+```Dockerfile
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq && \
   apt-get install -qq -y python-dev && \
   apt-get clean -qq && \
@@ -341,9 +341,9 @@ Esistono immagini docker per quasi tutto:
 - [postgreSQL](https://hub.docker.com/_/postgres/)
 - redis, elasticsearch, jenkins
 
-Tutte le immagini sopra sono immagini ufficiali, ovvero supportate da docker e partner (le si riconosce per l'underscore nell'URL). Ma il docker hub è pubblico e gratuito, quindi anche voi potete pubblicare le vostre immagini. Si può anche collegare a **github** per avere **build automatiche** ad ogni push.
+Tutte le immagini sopra sono ufficiali, ovvero supportate da docker e partner (le si riconosce per l'underscore nell'URL). Ma il docker hub è pubblico e gratuito, quindi anche voi potete pubblicare le vostre immagini. Si può anche collegare a **github** tramite hook per avere **build automatiche** ad ogni push.
 
-Notare che stiamo usando l'immagine `python:3.5-slim`: `3.5-slim` è chiamato tag ed è usato per rappresentare sia versioni diverse di python che tipi di "immagini" diverse. Ad esempio `slim` qui indica che l'immagine base è più "magra" di quella di `python:3.5`: probabilmente si tratta di ubuntu vs debian. In questo momento tutte le immagini ufficiali stanno passando ad Alpine Linux per motivi di dimensione e sicurezza. Scelta discutibile...
+Notare che stiamo usando l'immagine `python:3.5-slim`: `3.5-slim` è chiamato **tag** ed è usato per rappresentare sia versioni diverse di python che tipi di "immagini" diverse. Ad esempio `slim` qui indica che l'immagine base è più "magra" di quella di `python:3.5`: probabilmente si tratta di ubuntu vs debian. In questo momento tutte le immagini ufficiali stanno passando ad Alpine Linux per motivi di dimensione e sicurezza. Scelta discutibile...
 
 ## Registry privati
 
@@ -437,13 +437,6 @@ Prendere il progetto fornito in `1-docker-engine` e:
 - creare un'immagine per il progetto
 - avviare il progetto in un container
 
-## Riassunto parte 1
-
-- docker NON è un sistema di virtualizzazione!
-- abbiamo visto come lanciare un'immagine creando un container
-- abbiamo visto come creare una nostra immagine
-- Bonus: hai bisogno di un DB per un progetto anche non dockerizzato? Lancialo con docker: sarà semplice passare da un progetto all'altro
-
 
 # Parte 2: docker-compose
 
@@ -458,7 +451,7 @@ Nella nostra azienda lo usiamo per:
 
 Si tratta del caso più semplice ma terribilmente utile. Supponiamo di star sviluppando un'applicazione basata su elasticsearch e redis. È facile definire un progetto compose in un file chiamato `docker-compose.yml`:
 
-```
+```yaml
 elasticsearch:
   image: elasticsearch:1.7.5
   command: elasticsearch --node.local=true
@@ -480,11 +473,3 @@ Per lanciare i due servizi mi basta quindi:
 Per passare da un progetto ad un altro posso quindi semplicemente stoppare docker-compose con il comando `stop`, passare all'altro progetto e dare `up` nell'altro progetto. Non devo nemmeno ricordare quali siano le dipendenze di quel progetto. Fantastico.
 
 Avere solo 2 dipendenze è spesso un sogno: immaginate in progetti complessi strutturati in microservice quanto sia utile.
-
-
-## Installare docker
-
-Non pretendo di sostituirmi alla documentazione ufficiale per questo. Voglio solo ricordare che su Mac non può funzionare nativamente, quindi al massimo si può ricorrere a strumenti come boot2docker che semplificano la gestione di una VM Linux su cui gira veramente docker.
-
-Per questa presentazione, visto che non ho esperienza con docker su Mac, chiedo a tutti di usare direttamente Linux.
-
