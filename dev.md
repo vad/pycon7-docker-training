@@ -18,6 +18,8 @@ Docker nasce come tecnologia interna di un'azienda che vende PaaS, dotCloud. Ecc
 - aprile 2015: round da 95M $, si parla di valutazione miliardaria
 - maggio 2015: principali contributor: Docker Inc., Red Hat, IBM, Google, Cisco Systems
 
+## Cos'è docker
+
 Docker è un sistema di:
 
 - packaging di software e dipendenze (**image**)
