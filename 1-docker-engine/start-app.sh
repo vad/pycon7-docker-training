@@ -1,0 +1,1 @@
+sudo docker run -it --rm -p 8080:8080 --link aiohttpdemo_pg:db pyconsette/ex1

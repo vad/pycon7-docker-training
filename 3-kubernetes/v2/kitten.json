@@ -1,0 +1,30 @@
+---
+  kind: "ReplicationController"
+  apiVersion: "v1"
+  metadata:
+    name: "kitten"
+    labels:
+      state: "serving"
+  spec:
+    replicas: 2
+    selector:
+      app: "frontend"
+    template:
+      metadata:
+        labels:
+          app: "frontend"
+      spec:
+        volumes: null
+        containers:
+          - name: "kitten"
+            image: "kitten:v2"
+            ports:
+              - containerPort: 6000
+                protocol: "TCP"
+            imagePullPolicy: "IfNotPresent"
+          - name: "bash"
+            image: "python:3.5-slim"
+            imagePullPolicy: "IfNotPresent"
+            command: ["sleep", "600"]
+        restartPolicy: "Always"
+        dnsPolicy: "ClusterFirst"

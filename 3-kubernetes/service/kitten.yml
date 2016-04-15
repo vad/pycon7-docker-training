@@ -1,0 +1,10 @@
+id: "webfrontend"
+kind: "Service"
+apiVersion: "v1"
+port: 9090
+containerPort: 6000
+PublicIPs: [127.0.0.1]
+selector:
+  app: "kitten"
+labels:
+  name: "webservice"

@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: kitten
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: kitten
+    spec:
+      containers:
+        - name: "kitten"
+          image: "pyconsette/kitten:v1"
+          ports:
+            - containerPort: 6000
+              protocol: "TCP"
+          imagePullPolicy: "IfNotPresent"
+        - name: "bash"
+          image: "python:3.5-slim"
+          imagePullPolicy: "IfNotPresent"
+          command: ["sleep", "600"]
