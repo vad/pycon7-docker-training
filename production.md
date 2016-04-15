@@ -61,11 +61,13 @@ Funzionalità:
 Ha però dei lati negativi:
 
 - mancanza di **tools**
-- per lo scheduling richiede di impostare **limiti di memoria**, e... questo potrebbe portare a qualche "problemino" con l'oom-killer
 - mancata integrazione con **CloudWatch Logs**
 - l'agent ha spesso problemi di memory leaks, oppure lascia container running
 - ECS non si accorge di **nodi falliti** perché muore anche l'agent e quindi non fa rescheduling dei container
 - **sviluppo lento**
+- per lo scheduling richiede di impostare **limiti di memoria**, e... questo potrebbe portare a qualche "problemino" con l'oom-killer
+
+![OOM Killer](https://raw.githubusercontent.com/vad/pycon7-docker-training/master/_images/oom-killer.png)
 
 ## Kubernetes
 
