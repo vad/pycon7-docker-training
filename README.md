@@ -1,11 +1,11 @@
 # Docker: dalla build a production
 
-Questo è il materiale del training **"Docker: dalla build a production"**, Pycon Sette. È in italiano così come il training stesso. A parte questioni "motivazionali", quanto detto nel training è presente in questo materiale, principalmente in questo file, per 2 ragioni:
+Questo è il materiale del training **"Docker: dalla build a production"**, Pycon Sette. È in italiano così come il training stesso. A parte questioni "motivazionali", quanto detto nel training è presente in questo materiale, per 2 ragioni:
 
 - come supporto al training: copia-incollare da delle slide non piace a nessuno
 - per poter riusare il materiale tra un anno quando ne avrete bisogno, senza dover estrapolare significati nascosti da slide minimal
 
-Scaletta:
+## Scaletta
 - cos'è docker (10 minuti)
 - cos'è un container e come usarli (30 minuti)
 - immagini (15 minuti)
