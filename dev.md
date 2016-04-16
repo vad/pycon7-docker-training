@@ -25,7 +25,7 @@ Docker è un sistema di:
 - packaging di software e dipendenze (**image**)
 - avvio di questi software in modo isolato rispetto al resto del sistema (**container**)
 
-Inoltre docker è un ecosistema di tool per rendere super la gestione dei container.
+Inoltre docker è un **ecosistema** di tool per rendere super la gestione dei container.
 
 Docker si avvale di alcune tecnologie del **kernel Linux**. Non si tratta di funzionalità disponibili solo su Linux, anzi! Su Solaris e *BSD esistono cose simili da molti anni, ma docker attualmente funziona solo su Linux e in ogni caso un'immagine creata per Linux non potrebbe girare su altri OS.
 
@@ -440,7 +440,7 @@ Prendere il progetto fornito in `1-docker-engine` e:
 
 # Parte 2: docker-compose
 
-docker-compose è nato da un azienda comprata da Docker, si chiamava `fig`. È sostanzialmente un modo per gestire un'applicazione formata da più container. Ah, è una figata :)
+[docker-compose](https://docs.docker.com/compose/) è nato da un azienda comprata da Docker, si chiamava `fig`. È sostanzialmente un modo per gestire un'applicazione formata da più container. Ah, è una figata :)
 
 Nella nostra azienda lo usiamo per:
 
